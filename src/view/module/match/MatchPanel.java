@@ -2,12 +2,13 @@ package view.module.match;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import co.edu.unbosque.model.MatchDTO;
+import co.edu.unbosque.util.WordingMessages;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import model.persistence.dto.MatchDTO;
-import utils.WordingMessages;
 
 public class MatchPanel extends JPanel {
 

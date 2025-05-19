@@ -3,7 +3,7 @@ package view.modules.admin;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
-import utils.ViewNames;
+import co.edu.unbosque.util.ViewNames;
 import view.module.match.MatchManagementPanel;
 import view.module.team.TeamManagementPanel;
 import view.module.tournament.TournamentManagementPanel;

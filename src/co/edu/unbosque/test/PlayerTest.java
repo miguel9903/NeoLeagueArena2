@@ -7,9 +7,9 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.Player;
-import model.Team;
-import model.enums.UserRole;
+import co.edu.unbosque.model.Player;
+import co.edu.unbosque.model.Team;
+import co.edu.unbosque.model.UserRole;
 
 /**
  * Clase de prueba unitaria para la clase Player.

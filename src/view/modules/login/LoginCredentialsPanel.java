@@ -11,7 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-import utils.Colors;
+import co.edu.unbosque.util.Colors;
 
 public class LoginCredentialsPanel extends JPanel {
 

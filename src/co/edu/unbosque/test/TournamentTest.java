@@ -8,11 +8,11 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.Match;
-import model.Team;
-import model.Tournament;
-import model.enums.GamePlatform;
-import model.enums.TournamentPhase;
+import co.edu.unbosque.model.GamePlatform;
+import co.edu.unbosque.model.Match;
+import co.edu.unbosque.model.Team;
+import co.edu.unbosque.model.Tournament;
+import co.edu.unbosque.model.TournamentPhase;
 
 /**
  * Clase de prueba unitaria para la clase Tournament.

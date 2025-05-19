@@ -12,11 +12,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import model.enums.MatchStatus;
-import model.persistence.dto.TeamDTO;
-import model.persistence.dto.TournamentDTO;
-import utils.ButtonActionCommands;
-import utils.Colors;
+import co.edu.unbosque.model.MatchStatus;
+import co.edu.unbosque.model.TeamDTO;
+import co.edu.unbosque.model.TournamentDTO;
+import co.edu.unbosque.util.ButtonActionCommands;
+import co.edu.unbosque.util.Colors;
 import view.shared.FormFooterPanel;
 import view.shared.FormHeaderPanel;
 

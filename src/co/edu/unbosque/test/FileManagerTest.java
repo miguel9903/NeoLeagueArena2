@@ -1,12 +1,12 @@
 package co.edu.unbosque.test;
 
-import model.Player;
-import model.enums.UserRole;
-import model.persistence.FileManager;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import co.edu.unbosque.model.Player;
+import co.edu.unbosque.model.UserRole;
+import co.edu.unbosque.persistence.FileManager;
 
 import java.io.File;
 import java.time.LocalDate;

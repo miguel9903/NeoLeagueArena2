@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import utils.Colors;
+import co.edu.unbosque.util.Colors;
 
 public abstract class BaseCardPanel extends JPanel {
 

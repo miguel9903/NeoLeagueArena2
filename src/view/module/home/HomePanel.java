@@ -1,8 +1,11 @@
 package view.module.home;
 
 import javax.swing.*;
+
+import co.edu.unbosque.util.Colors;
+
 import java.awt.*;
-import utils.Colors;
+
 import view.module.tournament.TournamentCardPanel;
 import view.shared.CardListPanel; 
 

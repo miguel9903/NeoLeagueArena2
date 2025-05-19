@@ -3,10 +3,10 @@ package view.modules.player;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import model.persistence.dto.PlayerDTO;
-import utils.AssetPaths;
-import utils.Colors;
-import utils.WordingMessages;
+import co.edu.unbosque.model.PlayerDTO;
+import co.edu.unbosque.util.AssetPaths;
+import co.edu.unbosque.util.Colors;
+import co.edu.unbosque.util.WordingMessages;
 import view.modules.player.PlayerCardPanel;
 import view.shared.CardListPanel;
 

@@ -1,10 +1,12 @@
 package view.module.tournament;
 
 import javax.swing.*;
+
+import co.edu.unbosque.util.AssetPaths;
+import co.edu.unbosque.util.Colors;
+
 import java.awt.*;
 
-import utils.AssetPaths;
-import utils.Colors;
 import view.shared.BaseCardPanel;
 
 public class TournamentCardPanel extends BaseCardPanel {

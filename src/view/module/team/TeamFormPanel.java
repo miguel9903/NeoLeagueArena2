@@ -4,8 +4,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import utils.ButtonActionCommands;
-import utils.Colors;
+import co.edu.unbosque.util.ButtonActionCommands;
+import co.edu.unbosque.util.Colors;
 import view.shared.FormFooterPanel;
 import view.shared.FormHeaderPanel;
 

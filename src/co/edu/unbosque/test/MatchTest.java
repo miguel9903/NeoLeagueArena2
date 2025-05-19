@@ -8,9 +8,9 @@ import java.time.LocalTime;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.Match;
-import model.Team;
-import model.enums.MatchStatus;
+import co.edu.unbosque.model.Match;
+import co.edu.unbosque.model.MatchStatus;
+import co.edu.unbosque.model.Team;
 
 /**
  * Clase de prueba unitaria para la clase Match.

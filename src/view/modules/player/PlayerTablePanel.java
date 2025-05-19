@@ -10,7 +10,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import model.persistence.dto.PlayerDTO;
+import co.edu.unbosque.model.PlayerDTO;
 import view.shared.FormHeaderPanel;
 
 public class PlayerTablePanel extends JPanel {

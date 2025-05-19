@@ -2,13 +2,14 @@ package view.module.tournament;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import co.edu.unbosque.model.TournamentDTO;
+import co.edu.unbosque.util.Colors;
+import co.edu.unbosque.util.WordingMessages;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import model.persistence.dto.TournamentDTO;
-import utils.Colors;
-import utils.WordingMessages;
 
 public class TournamentPanel extends JPanel {
 

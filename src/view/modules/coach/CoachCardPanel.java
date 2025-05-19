@@ -1,10 +1,12 @@
 package view.modules.coach;
 
 import javax.swing.*;
+
+import co.edu.unbosque.util.AssetPaths;
+import co.edu.unbosque.util.Colors;
+
 import java.awt.*;
 
-import utils.AssetPaths;
-import utils.Colors;
 import view.shared.BaseCardPanel;
 
 public class CoachCardPanel extends BaseCardPanel {
