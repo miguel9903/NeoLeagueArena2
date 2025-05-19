@@ -1,3 +1,8 @@
+/**
+ * La clase TeamPlayerAssignmentPanel representa un panel para asignar jugadores a equipos.
+ * Incluye un encabezado, un panel para seleccionar equipos y jugadores, y un pie de formulario
+ * con botones para realizar acciones como agregar jugadores.
+ */
 package view.module.match;
 
 import java.awt.BorderLayout;
@@ -19,157 +24,276 @@ import utils.Colors;
 import view.shared.FormFooterPanel;
 import view.shared.FormHeaderPanel;
 
+/**
+ * La clase TeamPlayerAssignmentPanel representa un panel para asignar jugadores a equipos.
+ * Incluye un encabezado, un panel para seleccionar equipos y jugadores, y un pie de formulario
+ * con botones para realizar acciones como agregar jugadores.
+ */
 public class TeamPlayerAssignmentPanel extends JPanel {
 
-	private FormHeaderPanel formHeaderPanel;
-	private FormFooterPanel formFooterPanel;
+    /** Panel de encabezado del formulario. */
+    private FormHeaderPanel formHeaderPanel;
 
-	private JPanel playersPanel;
-	private JLabel teamLabel;
-	private JComboBox<String> teamComboBox;
-	private JLabel playerLabel;
-	private JComboBox<String> playerComboBox;
-	private JButton addPlayerButton;
+    /** Panel de pie del formulario con botones de acción. */
+    private FormFooterPanel formFooterPanel;
 
-	public TeamPlayerAssignmentPanel() {
-		setLayout(new BorderLayout());
-		initializeComponents();
-		setupFormControls();	
-	}
+    /** Panel para seleccionar equipos y jugadores. */
+    private JPanel playersPanel;
 
-	private void initializeComponents() {
-		formHeaderPanel = new FormHeaderPanel();
-		formHeaderPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
-		
-		formFooterPanel = new FormFooterPanel();
-		formFooterPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
-		formFooterPanel.setBackground(Color.decode(Colors.MEDIUM_GRAY));
+    /** Etiqueta para el ComboBox de equipos. */
+    private JLabel teamLabel;
 
-		playersPanel = new JPanel();
-		playersPanel.setLayout(new GridLayout(6, 2, 10, 10)); 
-		playersPanel.setBorder(new EmptyBorder(20, 20, 120, 20));
+    /** ComboBox para seleccionar equipos. */
+    private JComboBox<String> teamComboBox;
 
-		teamLabel = new JLabel("Team:");
-		teamComboBox = new JComboBox<>();
-		teamComboBox.addItem("Team Alpha");
-		teamComboBox.addItem("Team Beta");
+    /** Etiqueta para el ComboBox de jugadores. */
+    private JLabel playerLabel;
 
-		playerLabel = new JLabel("Player:");
-		playerComboBox = new JComboBox<>();
-		playerComboBox.addItem("Juan Pérez");
-		playerComboBox.addItem("María Gómez");
-		playerComboBox.addItem("Carlos López");
-		playerComboBox.addItem("Ana Torres");
+    /** ComboBox para seleccionar jugadores. */
+    private JComboBox<String> playerComboBox;
 
-		addPlayerButton = new JButton("ADD PLAYER");
-		addPlayerButton.setActionCommand("ADD_PLAYER");
+    /** Botón para agregar jugadores al equipo seleccionado. */
+    private JButton addPlayerButton;
 
-		JLabel EMPTY_LABEL = new JLabel("");
-		playersPanel.add(teamLabel);
-		playersPanel.add(teamComboBox);
-		playersPanel.add(playerLabel);
-		playersPanel.add(playerComboBox);
-		playersPanel.add(EMPTY_LABEL);
-		playersPanel.add(EMPTY_LABEL);
-		playersPanel.add(EMPTY_LABEL);
-		playersPanel.add(EMPTY_LABEL);
-		playersPanel.add(EMPTY_LABEL);
-		playersPanel.add(EMPTY_LABEL);
-		playersPanel.add(EMPTY_LABEL);
-		playersPanel.add(EMPTY_LABEL);
+    /**
+     * Construye un nuevo TeamPlayerAssignmentPanel e inicializa sus componentes.
+     */
+    public TeamPlayerAssignmentPanel() {
+        setLayout(new BorderLayout());
+        initializeComponents();
+        setupFormControls();
+    }
 
-		add(formHeaderPanel, BorderLayout.NORTH);
-		add(playersPanel, BorderLayout.CENTER);
-		add(formFooterPanel, BorderLayout.SOUTH);
-	}
+    /**
+     * Inicializa los componentes del panel, incluyendo el encabezado, el panel de selección
+     * de equipos y jugadores, y el pie del formulario.
+     */
+    private void initializeComponents() {
+        formHeaderPanel = new FormHeaderPanel();
+        formHeaderPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
 
-	public void setupFormControls() {
-		formHeaderPanel.getFormTitleLabel().setText("Add Players");
-		formFooterPanel.setPrimaryButtonText("ADD PLAYER");
-		formFooterPanel.setPrimaryButtonActionCommand("ADD_PLAYER");
-		formFooterPanel.removeSecondaryButton();
-		formFooterPanel.removeTertiaryButton();
-	}
-	
+        formFooterPanel = new FormFooterPanel();
+        formFooterPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
+        formFooterPanel.setBackground(Color.decode(Colors.MEDIUM_GRAY));
+
+        playersPanel = new JPanel();
+        playersPanel.setLayout(new GridLayout(6, 2, 10, 10));
+        playersPanel.setBorder(new EmptyBorder(20, 20, 120, 20));
+
+        teamLabel = new JLabel("Equipo:");
+        teamComboBox = new JComboBox<>();
+        teamComboBox.addItem("Equipo Alpha");
+        teamComboBox.addItem("Equipo Beta");
+
+        playerLabel = new JLabel("Jugador:");
+        playerComboBox = new JComboBox<>();
+        playerComboBox.addItem("Juan Pérez");
+        playerComboBox.addItem("María Gómez");
+        playerComboBox.addItem("Carlos López");
+        playerComboBox.addItem("Ana Torres");
+
+        addPlayerButton = new JButton("AGREGAR JUGADOR");
+        addPlayerButton.setActionCommand("ADD_PLAYER");
+
+        JLabel EMPTY_LABEL = new JLabel("");
+        playersPanel.add(teamLabel);
+        playersPanel.add(teamComboBox);
+        playersPanel.add(playerLabel);
+        playersPanel.add(playerComboBox);
+        playersPanel.add(EMPTY_LABEL);
+        playersPanel.add(EMPTY_LABEL);
+        playersPanel.add(EMPTY_LABEL);
+        playersPanel.add(EMPTY_LABEL);
+        playersPanel.add(EMPTY_LABEL);
+        playersPanel.add(EMPTY_LABEL);
+        playersPanel.add(EMPTY_LABEL);
+        playersPanel.add(EMPTY_LABEL);
+
+        add(formHeaderPanel, BorderLayout.NORTH);
+        add(playersPanel, BorderLayout.CENTER);
+        add(formFooterPanel, BorderLayout.SOUTH);
+    }
+
+    /**
+     * Configura los controles del formulario, incluyendo los textos y comandos de acción de los botones.
+     */
+    public void setupFormControls() {
+        formHeaderPanel.getFormTitleLabel().setText("Agregar Jugadores");
+        formFooterPanel.setPrimaryButtonText("AGREGAR JUGADOR");
+        formFooterPanel.setPrimaryButtonActionCommand("ADD_PLAYER");
+        formFooterPanel.removeSecondaryButton();
+        formFooterPanel.removeTertiaryButton();
+    }
+
+    /**
+     * Carga los elementos del ComboBox de jugadores.
+     *
+     * @param playerList la lista de DTOs de jugadores
+     */
     public void loadPlayersComboBox(List<PlayerDTO> playerList) {
-    	playerComboBox.removeAllItems(); 
-        
+        playerComboBox.removeAllItems();
+
         for (PlayerDTO playerDTO : playerList) {
-            String playerhName = playerDTO.getId() + " - " + playerDTO.getFirstName() + " " + playerDTO.getLastName() + " (" + playerDTO.getNickName() + ")";
-            playerComboBox.addItem(playerhName);
+            String playerName = playerDTO.getId() + " - " + playerDTO.getFirstName() + " " + playerDTO.getLastName() + " (" + playerDTO.getNickName() + ")";
+            playerComboBox.addItem(playerName);
         }
     }
 
+    /**
+     * Carga los elementos del ComboBox de equipos.
+     *
+     * @param teamList la lista de DTOs de equipos
+     */
     public void loadTeamsComboBox(List<TeamDTO> teamList) {
-    	teamComboBox.removeAllItems(); 
-        
+        teamComboBox.removeAllItems();
+
         for (TeamDTO teamDTO : teamList) {
             String teamName = teamDTO.getId() + " - " + teamDTO.getName();
             teamComboBox.addItem(teamName);
         }
     }
 
-	public FormHeaderPanel getFormHeaderPanel() {
-		return formHeaderPanel;
-	}
+    /**
+     * Obtiene el panel de encabezado del formulario.
+     *
+     * @return el panel de encabezado del formulario
+     */
+    public FormHeaderPanel getFormHeaderPanel() {
+        return formHeaderPanel;
+    }
 
-	public void setFormHeaderPanel(FormHeaderPanel formHeaderPanel) {
-		this.formHeaderPanel = formHeaderPanel;
-	}
+    /**
+     * Establece el panel de encabezado del formulario.
+     *
+     * @param formHeaderPanel el panel de encabezado del formulario a establecer
+     */
+    public void setFormHeaderPanel(FormHeaderPanel formHeaderPanel) {
+        this.formHeaderPanel = formHeaderPanel;
+    }
 
-	public FormFooterPanel getFormFooterPanel() {
-		return formFooterPanel;
-	}
+    /**
+     * Obtiene el panel de pie del formulario con botones de acción.
+     *
+     * @return el panel de pie del formulario
+     */
+    public FormFooterPanel getFormFooterPanel() {
+        return formFooterPanel;
+    }
 
-	public void setFormFooterPanel(FormFooterPanel formFooterPanel) {
-		this.formFooterPanel = formFooterPanel;
-	}
+    /**
+     * Establece el panel de pie del formulario con botones de acción.
+     *
+     * @param formFooterPanel el panel de pie del formulario a establecer
+     */
+    public void setFormFooterPanel(FormFooterPanel formFooterPanel) {
+        this.formFooterPanel = formFooterPanel;
+    }
 
-	public JPanel getPlayersPanel() {
-		return playersPanel;
-	}
+    /**
+     * Obtiene el panel para seleccionar equipos y jugadores.
+     *
+     * @return el panel para seleccionar equipos y jugadores
+     */
+    public JPanel getPlayersPanel() {
+        return playersPanel;
+    }
 
-	public void setPlayersPanel(JPanel playersPanel) {
-		this.playersPanel = playersPanel;
-	}
+    /**
+     * Establece el panel para seleccionar equipos y jugadores.
+     *
+     * @param playersPanel el panel para seleccionar equipos y jugadores a establecer
+     */
+    public void setPlayersPanel(JPanel playersPanel) {
+        this.playersPanel = playersPanel;
+    }
 
-	public JLabel getTeamLabel() {
-		return teamLabel;
-	}
+    /**
+     * Obtiene la etiqueta del ComboBox de equipos.
+     *
+     * @return la etiqueta del ComboBox de equipos
+     */
+    public JLabel getTeamLabel() {
+        return teamLabel;
+    }
 
-	public void setTeamLabel(JLabel teamLabel) {
-		this.teamLabel = teamLabel;
-	}
+    /**
+     * Establece la etiqueta del ComboBox de equipos.
+     *
+     * @param teamLabel la etiqueta del ComboBox de equipos a establecer
+     */
+    public void setTeamLabel(JLabel teamLabel) {
+        this.teamLabel = teamLabel;
+    }
 
-	public JComboBox<String> getTeamComboBox() {
-		return teamComboBox;
-	}
+    /**
+     * Obtiene el ComboBox de equipos.
+     *
+     * @return el ComboBox de equipos
+     */
+    public JComboBox<String> getTeamComboBox() {
+        return teamComboBox;
+    }
 
-	public void setTeamComboBox(JComboBox<String> teamComboBox) {
-		this.teamComboBox = teamComboBox;
-	}
+    /**
+     * Establece el ComboBox de equipos.
+     *
+     * @param teamComboBox el ComboBox de equipos a establecer
+     */
+    public void setTeamComboBox(JComboBox<String> teamComboBox) {
+        this.teamComboBox = teamComboBox;
+    }
 
-	public JLabel getPlayerLabel() {
-		return playerLabel;
-	}
+    /**
+     * Obtiene la etiqueta del ComboBox de jugadores.
+     *
+     * @return la etiqueta del ComboBox de jugadores
+     */
+    public JLabel getPlayerLabel() {
+        return playerLabel;
+    }
 
-	public void setPlayerLabel(JLabel playerLabel) {
-		this.playerLabel = playerLabel;
-	}
+    /**
+     * Establece la etiqueta del ComboBox de jugadores.
+     *
+     * @param playerLabel la etiqueta del ComboBox de jugadores a establecer
+     */
+    public void setPlayerLabel(JLabel playerLabel) {
+        this.playerLabel = playerLabel;
+    }
 
-	public JComboBox<String> getPlayerComboBox() {
-		return playerComboBox;
-	}
+    /**
+     * Obtiene el ComboBox de jugadores.
+     *
+     * @return el ComboBox de jugadores
+     */
+    public JComboBox<String> getPlayerComboBox() {
+        return playerComboBox;
+    }
 
-	public void setPlayerComboBox(JComboBox<String> playerComboBox) {
-		this.playerComboBox = playerComboBox;
-	}
+    /**
+     * Establece el ComboBox de jugadores.
+     *
+     * @param playerComboBox el ComboBox de jugadores a establecer
+     */
+    public void setPlayerComboBox(JComboBox<String> playerComboBox) {
+        this.playerComboBox = playerComboBox;
+    }
 
-	public JButton getAddPlayerButton() {
-		return addPlayerButton;
-	}
+    /**
+     * Obtiene el botón para agregar jugadores.
+     *
+     * @return el botón para agregar jugadores
+     */
+    public JButton getAddPlayerButton() {
+        return addPlayerButton;
+    }
 
-	public void setAddPlayerButton(JButton addPlayerButton) {
-		this.addPlayerButton = addPlayerButton;
-	}
+    /**
+     * Establece el botón para agregar jugadores.
+     *
+     * @param addPlayerButton el botón para agregar jugadores a establecer
+     */
+    public void setAddPlayerButton(JButton addPlayerButton) {
+        this.addPlayerButton = addPlayerButton;
+    }
 }

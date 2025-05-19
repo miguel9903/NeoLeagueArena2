@@ -1,3 +1,7 @@
+/**
+ * La clase MatchTablePanel representa un panel que muestra una tabla de jugadores.
+ * Incluye un encabezado y una tabla con datos de ejemplo de jugadores.
+ */
 package view.module.match;
 
 import java.awt.BorderLayout;
@@ -11,35 +15,50 @@ import javax.swing.table.DefaultTableModel;
 
 import view.shared.FormHeaderPanel;
 
+/**
+ * La clase MatchTablePanel representa un panel que muestra una tabla de jugadores.
+ * Incluye un encabezado y una tabla con datos de ejemplo de jugadores.
+ */
 public class MatchTablePanel extends JPanel {
-	
-    private JTable playersTable;
-    private DefaultTableModel tableModel;
-	private FormHeaderPanel formHeaderPanel;
 
+    /** Tabla para mostrar los datos de los jugadores. */
+    private JTable playersTable;
+
+    /** Modelo de tabla para gestionar los datos de la tabla. */
+    private DefaultTableModel tableModel;
+
+    /** Panel de encabezado del formulario. */
+    private FormHeaderPanel formHeaderPanel;
+
+    /**
+     * Construye un nuevo MatchTablePanel e inicializa sus componentes.
+     */
     public MatchTablePanel() {
-    	setLayout(new BorderLayout());
-		setBackground(Color.WHITE);
-		initializeComponents();
-		setupFormControls();
+        setLayout(new BorderLayout());
+        setBackground(Color.WHITE);
+        initializeComponents();
+        setupFormControls();
     }
-    
+
+    /**
+     * Inicializa los componentes del panel, incluyendo el encabezado y la tabla de jugadores.
+     */
     public void initializeComponents() {
-		formHeaderPanel = new FormHeaderPanel();
-		formHeaderPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
-    	
+        formHeaderPanel = new FormHeaderPanel();
+        formHeaderPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
+
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
 
         String[] columns = {
-            "ID", "Name", "Last Name", "Email", "Country",
-            "City", "Role", "Nickname", "Team", "Experience"
+            "ID", "Nombre", "Apellido", "Email", "País",
+            "Ciudad", "Rol", "Apodo", "Equipo", "Experiencia"
         };
 
         String[][] exampleData = {
-            {"101", "Juan", "Pérez", "juan@correo.com", "Colombia", "Bogotá", "Player", "ShadowX", "Team A", "3"},
-            {"102", "Ana", "López", "ana@correo.com", "México", "CDMX", "Administrator", "An4Play", "Team B", "5"},
-            {"103", "Luis", "Gómez", "luis@correo.com", "Perú", "Lima", "Player", "LGkiller", "Team A", "2"}
+            {"101", "Juan", "Pérez", "juan@correo.com", "Colombia", "Bogotá", "Jugador", "ShadowX", "Equipo A", "3"},
+            {"102", "Ana", "López", "ana@correo.com", "México", "CDMX", "Administrador", "An4Play", "Equipo B", "5"},
+            {"103", "Luis", "Gómez", "luis@correo.com", "Perú", "Lima", "Jugador", "LGkiller", "Equipo A", "2"}
         };
 
         tableModel = new DefaultTableModel(exampleData, columns) {
@@ -56,8 +75,11 @@ public class MatchTablePanel extends JPanel {
         add(formHeaderPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
     }
-    
+
+    /**
+     * Configura los controles del formulario, incluyendo el título del encabezado.
+     */
     public void setupFormControls() {
-		formHeaderPanel.getFormTitleLabel().setText("List Teams");
-	}
+        formHeaderPanel.getFormTitleLabel().setText("Listar Equipos");
+    }
 }

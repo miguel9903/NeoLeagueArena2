@@ -1,3 +1,8 @@
+/**
+ * La clase MatchFormFieldsPanel representa un panel que contiene los campos de un formulario
+ * para ingresar información sobre un partido. Incluye campos para el ID, nombre, descripción,
+ * URL del logo, puntuación, ranking, entrenador y jugadores.
+ */
 package view.module.match;
 
 import java.awt.Dimension;
@@ -14,137 +19,230 @@ import model.persistence.dto.CoachDTO;
 
 import javax.swing.JScrollPane;
 
+/**
+ * La clase MatchFormFieldsPanel representa un panel que contiene los campos de un formulario
+ * para ingresar información sobre un partido. Incluye campos para el ID, nombre, descripción,
+ * URL del logo, puntuación, ranking, entrenador y jugadores.
+ */
 public class MatchFormFieldsPanel extends JPanel {
 
-	private JLabel idLabel;
-	private JLabel nameLabel;
-	private JLabel descriptionLabel;
-	private JLabel logoLabel;
-	private JLabel scoreLabel;
-	private JLabel rankingLabel;
-	private JLabel coachLabel;
-	private JLabel playersLabel;
+    /** Etiqueta para el campo ID. */
+    private JLabel idLabel;
 
-	private JTextField idTextField;
-	private JTextField nameTextField;
-	private JTextArea descriptionTextArea;
-	private JTextField logoTextField;
-	private JTextField scoreTextField;
-	private JTextField rankingTextField;
+    /** Etiqueta para el campo Nombre. */
+    private JLabel nameLabel;
 
-	private JComboBox<String> coachComboBox;
-	private JComboBox<String> playersComboBox;
+    /** Etiqueta para el campo Descripción. */
+    private JLabel descriptionLabel;
 
-	public MatchFormFieldsPanel() {
-		setLayout(new GridLayout(7, 2, 10, 10));
-		initializeComponents();
-	}
+    /** Etiqueta para el campo Logo. */
+    private JLabel logoLabel;
 
-	public void initializeComponents() {
-		idLabel = new JLabel("ID* :");
-		idTextField = new JTextField();
-		idTextField.setEditable(false);
-		idTextField.setEnabled(false);
-		add(idLabel);
-		add(idTextField);
+    /** Etiqueta para el campo Puntuación. */
+    private JLabel scoreLabel;
 
-		nameLabel = new JLabel("Name* :");
-		nameTextField = new JTextField();
-		add(nameLabel);
-		add(nameTextField);
+    /** Etiqueta para el campo Ranking. */
+    private JLabel rankingLabel;
 
-		descriptionLabel = new JLabel("Description* :");
-		descriptionTextArea = new JTextArea();
+    /** Etiqueta para el campo Entrenador. */
+    private JLabel coachLabel;
 
-		descriptionTextArea.setLineWrap(true);
-		descriptionTextArea.setWrapStyleWord(true);
-		JScrollPane scrollPane = new JScrollPane(descriptionTextArea);
-		scrollPane.setPreferredSize(new Dimension(200, 100));
-		add(descriptionLabel);
-		add(scrollPane);
+    /** Etiqueta para el campo Jugadores. */
+    private JLabel playersLabel;
 
-		logoLabel = new JLabel("Logo URL/Path:");
-		logoTextField = new JTextField();
-		add(logoLabel);
-		add(logoTextField);
+    /** Campo de texto para el ID. */
+    private JTextField idTextField;
 
-		scoreLabel = new JLabel("Score:");
-		scoreTextField = new JTextField();
-		add(scoreLabel);
-		add(scoreTextField);
+    /** Campo de texto para el Nombre. */
+    private JTextField nameTextField;
 
-		rankingLabel = new JLabel("Ranking:");
-		rankingTextField = new JTextField();
-		add(rankingLabel);
-		add(rankingTextField);
+    /** Área de texto para la Descripción. */
+    private JTextArea descriptionTextArea;
 
-		coachLabel = new JLabel("Coach:");
-		coachComboBox = new JComboBox<>(new String[]{"Coach 1", "Coach 2", "Coach 3"});
-		add(coachLabel);
-		add(coachComboBox);
+    /** Campo de texto para la URL del Logo. */
+    private JTextField logoTextField;
 
-		playersLabel = new JLabel("Players:");
-		playersComboBox = new JComboBox<>(new String[]{"Player 1", "Player 2", "Player 3"});
-		// add(playersLabel);
-		// add(playersComboBox);
-	}
+    /** Campo de texto para la Puntuación. */
+    private JTextField scoreTextField;
 
-	public void setCoachesComboBox(List<CoachDTO> coachList) {
-		coachComboBox.removeAllItems(); 
+    /** Campo de texto para el Ranking. */
+    private JTextField rankingTextField;
 
-		for (CoachDTO coachDTO : coachList) {
-			String coachName = coachDTO.getId() + " - " + coachDTO.getFirstName() + " " + coachDTO.getLastName();
-			coachComboBox.addItem(coachName);
-		}
-	}
+    /** ComboBox para seleccionar el Entrenador. */
+    private JComboBox<String> coachComboBox;
 
-	public void resetFields() {
-		idTextField.setText("");
-		nameTextField.setText("");
-		descriptionTextArea.setText("");
-		logoTextField.setText("");
-		scoreTextField.setText("");
-		rankingTextField.setText("");
-		coachComboBox.setSelectedIndex(0);
-		playersComboBox.setSelectedIndex(0);
-	}
+    /** ComboBox para seleccionar los Jugadores. */
+    private JComboBox<String> playersComboBox;
 
-	public Integer getCoachComboBoxValue() {
-		String coachText = (String) coachComboBox.getSelectedItem();
-		return (coachText != null && !coachText.isEmpty() && coachText.contains("-")) 
-				? Integer.parseInt(coachText.substring(0, coachText.indexOf(" -"))) 
-						: null;
-	}
+    /**
+     * Construye un nuevo MatchFormFieldsPanel e inicializa sus componentes.
+     */
+    public MatchFormFieldsPanel() {
+        setLayout(new GridLayout(7, 2, 10, 10));
+        initializeComponents();
+    }
 
-	public JTextField getIdTextField() {
-		return idTextField;
-	}
+    /**
+     * Inicializa los componentes del panel, incluyendo etiquetas y campos de texto.
+     */
+    public void initializeComponents() {
+        idLabel = new JLabel("ID* :");
+        idTextField = new JTextField();
+        idTextField.setEditable(false);
+        idTextField.setEnabled(false);
+        add(idLabel);
+        add(idTextField);
 
-	public JTextField getNameTextField() {
-		return nameTextField;
-	}
+        nameLabel = new JLabel("Nombre* :");
+        nameTextField = new JTextField();
+        add(nameLabel);
+        add(nameTextField);
 
-	public JTextArea getDescriptionTextArea() {
-		return descriptionTextArea;
-	}
+        descriptionLabel = new JLabel("Descripción* :");
+        descriptionTextArea = new JTextArea();
 
-	public JTextField getLogoTextField() {
-		return logoTextField;
-	}
+        descriptionTextArea.setLineWrap(true);
+        descriptionTextArea.setWrapStyleWord(true);
+        JScrollPane scrollPane = new JScrollPane(descriptionTextArea);
+        scrollPane.setPreferredSize(new Dimension(200, 100));
+        add(descriptionLabel);
+        add(scrollPane);
 
-	public JTextField getScoreTextField() {
-		return scoreTextField;
-	}
+        logoLabel = new JLabel("URL/Ruta del Logo:");
+        logoTextField = new JTextField();
+        add(logoLabel);
+        add(logoTextField);
 
-	public JTextField getRankingTextField() {
-		return rankingTextField;
-	}
+        scoreLabel = new JLabel("Puntuación:");
+        scoreTextField = new JTextField();
+        add(scoreLabel);
+        add(scoreTextField);
 
-	public JComboBox<String> getCoachComboBox() {
-		return coachComboBox;
-	}
+        rankingLabel = new JLabel("Ranking:");
+        rankingTextField = new JTextField();
+        add(rankingLabel);
+        add(rankingTextField);
 
-	public JComboBox<String> getPlayersComboBox() {
-		return playersComboBox;
-	}
+        coachLabel = new JLabel("Entrenador:");
+        coachComboBox = new JComboBox<>(new String[]{"Entrenador 1", "Entrenador 2", "Entrenador 3"});
+        add(coachLabel);
+        add(coachComboBox);
+
+        playersLabel = new JLabel("Jugadores:");
+        playersComboBox = new JComboBox<>(new String[]{"Jugador 1", "Jugador 2", "Jugador 3"});
+        // add(playersLabel);
+        // add(playersComboBox);
+    }
+
+    /**
+     * Establece los elementos del ComboBox de entrenadores.
+     *
+     * @param coachList la lista de DTOs de entrenadores
+     */
+    public void setCoachesComboBox(List<CoachDTO> coachList) {
+        coachComboBox.removeAllItems();
+
+        for (CoachDTO coachDTO : coachList) {
+            String coachName = coachDTO.getId() + " - " + coachDTO.getFirstName() + " " + coachDTO.getLastName();
+            coachComboBox.addItem(coachName);
+        }
+    }
+
+    /**
+     * Reinicia todos los campos del formulario a sus valores por defecto.
+     */
+    public void resetFields() {
+        idTextField.setText("");
+        nameTextField.setText("");
+        descriptionTextArea.setText("");
+        logoTextField.setText("");
+        scoreTextField.setText("");
+        rankingTextField.setText("");
+        coachComboBox.setSelectedIndex(0);
+        playersComboBox.setSelectedIndex(0);
+    }
+
+    /**
+     * Obtiene el valor seleccionado en el ComboBox de entrenadores.
+     *
+     * @return el ID del entrenador seleccionado, o null si no hay selección válida
+     */
+    public Integer getCoachComboBoxValue() {
+        String coachText = (String) coachComboBox.getSelectedItem();
+        return (coachText != null && !coachText.isEmpty() && coachText.contains("-"))
+                ? Integer.parseInt(coachText.substring(0, coachText.indexOf(" -")))
+                : null;
+    }
+
+    /**
+     * Obtiene el campo de texto del ID.
+     *
+     * @return el campo de texto del ID
+     */
+    public JTextField getIdTextField() {
+        return idTextField;
+    }
+
+    /**
+     * Obtiene el campo de texto del Nombre.
+     *
+     * @return el campo de texto del Nombre
+     */
+    public JTextField getNameTextField() {
+        return nameTextField;
+    }
+
+    /**
+     * Obtiene el área de texto de la Descripción.
+     *
+     * @return el área de texto de la Descripción
+     */
+    public JTextArea getDescriptionTextArea() {
+        return descriptionTextArea;
+    }
+
+    /**
+     * Obtiene el campo de texto de la URL del Logo.
+     *
+     * @return el campo de texto de la URL del Logo
+     */
+    public JTextField getLogoTextField() {
+        return logoTextField;
+    }
+
+    /**
+     * Obtiene el campo de texto de la Puntuación.
+     *
+     * @return el campo de texto de la Puntuación
+     */
+    public JTextField getScoreTextField() {
+        return scoreTextField;
+    }
+
+    /**
+     * Obtiene el campo de texto del Ranking.
+     *
+     * @return el campo de texto del Ranking
+     */
+    public JTextField getRankingTextField() {
+        return rankingTextField;
+    }
+
+    /**
+     * Obtiene el ComboBox de Entrenadores.
+     *
+     * @return el ComboBox de Entrenadores
+     */
+    public JComboBox<String> getCoachComboBox() {
+        return coachComboBox;
+    }
+
+    /**
+     * Obtiene el ComboBox de Jugadores.
+     *
+     * @return el ComboBox de Jugadores
+     */
+    public JComboBox<String> getPlayersComboBox() {
+        return playersComboBox;
+    }
 }

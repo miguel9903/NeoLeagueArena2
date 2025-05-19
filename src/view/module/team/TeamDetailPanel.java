@@ -1,3 +1,8 @@
+/**
+ * La clase TeamDetailPanel representa un panel que muestra los detalles de un equipo.
+ * Incluye información como el nombre del equipo, entrenador, miembros, puntuación, ranking,
+ * descripción y una lista de jugadores.
+ */
 package view.module.team;
 
 import javax.swing.*;
@@ -15,256 +20,444 @@ import utils.WordingMessages;
 import view.modules.player.PlayerCardPanel;
 import view.shared.CardListPanel;
 
+/**
+ * La clase TeamDetailPanel representa un panel que muestra los detalles de un equipo.
+ * Incluye información como el nombre del equipo, entrenador, miembros, puntuación, ranking,
+ * descripción y una lista de jugadores.
+ */
 public class TeamDetailPanel extends JPanel {
 
-	private JPanel playerLabelPanel ;
-	private JPanel logoPanel;
-	private JPanel infoPanel;
-	
-	private JPanel playerListPanel;
-	private	JScrollPane scrollPanel;
-	private List<PlayerCardPanel> playerCards;
+    /** Panel para la etiqueta de jugadores. */
+    private JPanel playerLabelPanel;
 
-	private JLabel logoLabel;
-	private JLabel nameLabel;
-	private JLabel coachLabel;
-	private JLabel membersLabel;
-	private JLabel playersLabel;
-	private JLabel scoreLabel;
-	private JLabel rankingLabel;
-	
-	private JTextArea descriptionTextArea;
+    /** Panel para el logo del equipo. */
+    private JPanel logoPanel;
 
-	
-	public TeamDetailPanel() {
-		setLayout(new BorderLayout());
-		setBackground(Color.decode(Colors.LIGHT_GRAY));  
-		setBorder(new EmptyBorder(20, 20, 20, 20));
+    /** Panel para la información del equipo. */
+    private JPanel infoPanel;
 
-		initializeComponents();
-	}
+    /** Panel para la lista de jugadores. */
+    private JPanel playerListPanel;
 
-	private void initializeComponents() {
-		logoPanel = new JPanel();
-		logoPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+    /** Panel de desplazamiento para la lista de jugadores. */
+    private JScrollPane scrollPanel;
 
-		ImageIcon teamIcon = loadIcon(AssetPaths.TEAM_ICON, 90, 90);
-		logoLabel = new JLabel(teamIcon);
-		logoPanel.add(logoLabel);
+    /** Lista de tarjetas de jugadores. */
+    private List<PlayerCardPanel> playerCards;
 
-		infoPanel = new JPanel();
-		infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
-		
-		nameLabel = new JLabel("Team Name");
-		nameLabel.setFont(new Font("Arial", Font.BOLD, 24));
-		nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		nameLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		infoPanel.add(nameLabel);
+    /** Etiqueta para el logo del equipo. */
+    private JLabel logoLabel;
 
-		coachLabel = new JLabel("Coach: ");
-		coachLabel.setFont(new Font("Arial", Font.ITALIC, 16));
-		coachLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		coachLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
-		infoPanel.add(coachLabel); 
+    /** Etiqueta para el nombre del equipo. */
+    private JLabel nameLabel;
 
-		membersLabel = new JLabel("Members: 5");
-		membersLabel.setFont(new Font("Arial", Font.ITALIC, 16));
-		membersLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		membersLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
-		infoPanel.add(membersLabel); 
+    /** Etiqueta para el nombre del entrenador. */
+    private JLabel coachLabel;
 
-		scoreLabel = new JLabel("Score: ");
-		scoreLabel.setFont(new Font("Arial", Font.ITALIC, 16));
-		scoreLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		scoreLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
-		infoPanel.add(scoreLabel); 
-		
-		rankingLabel = new JLabel("Ranking: ");
-		rankingLabel.setFont(new Font("Arial", Font.ITALIC, 16));
-		rankingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		rankingLabel.setBorder(new EmptyBorder(2, 2, 20, 2));
-		infoPanel.add(rankingLabel); 
+    /** Etiqueta para el número de miembros del equipo. */
+    private JLabel membersLabel;
 
-		descriptionTextArea = new JTextArea();
-		descriptionTextArea.setText("");
-		descriptionTextArea.setFont(new Font("Arial", Font.PLAIN, 16));
-		descriptionTextArea.setWrapStyleWord(true); 
-		descriptionTextArea.setLineWrap(true); 
-		descriptionTextArea.setOpaque(false);  
-		descriptionTextArea.setEditable(false);  
-			
-		playerCards = new ArrayList<>();
-		
-		playersLabel = new JLabel("Players: ");
-		playersLabel.setFont(new Font("Arial", Font.BOLD, 20));
-		playersLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		playersLabel.setBorder(new EmptyBorder(20, 0, 20, 0));
-		infoPanel.add(playersLabel);
+    /** Etiqueta para la lista de jugadores. */
+    private JLabel playersLabel;
 
-		add(logoPanel, BorderLayout.NORTH);
-		add(infoPanel, BorderLayout.CENTER);
-	}
+    /** Etiqueta para la puntuación del equipo. */
+    private JLabel scoreLabel;
 
-	public ImageIcon loadIcon(String imagePath, int width, int height) {
-		ImageIcon icon = new ImageIcon(imagePath);
-		Image scaledImage = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-		return new ImageIcon(scaledImage);
-	}
+    /** Etiqueta para el ranking del equipo. */
+    private JLabel rankingLabel;
 
-	public void renderTeamDetail(TeamDTO teamDTO) {
-		int totalPlayers = teamDTO.getPlayerIds() != null ? teamDTO.getPlayerIds().size() : 0;
-		
-		nameLabel.setText(teamDTO.getName());
-		coachLabel.setText("Coach: " + teamDTO.getCoachName());
-		descriptionTextArea.setText(teamDTO.getDescription());
-		scoreLabel.setText("Score: " + teamDTO.getScore());
-		rankingLabel.setText("Ranking: " + teamDTO.getRanking());
-		membersLabel.setText("Members: " + totalPlayers);
+    /** Área de texto para la descripción del equipo. */
+    private JTextArea descriptionTextArea;
 
-		playerCards.clear();
-		playerListPanel = new JPanel();
-		playerListPanel.setLayout(new GridLayout(0, 2, 10, 10));
-		
-		if (teamDTO.getPlayerIds() != null && !teamDTO.getPlayerIds().isEmpty()) {
-			for (PlayerDTO playerDTO : teamDTO.getPlayers()) {
-				PlayerCardPanel card = new PlayerCardPanel();
-				card.getNameLabel().setText(playerDTO.getFirstName() + playerDTO.getLastName());
-				card.getTeamLabel().setText("Team: " + teamDTO.getName());
-				card.getCountryLabel().setText("Country: " + playerDTO.getCountry());
-				card.getCityLabel().setText("City: " + playerDTO.getCity());
-				card.getAgeLabel().setText("City: " + playerDTO.getAge());
-			    card.getExperienceLevelLabel().setText("Experience level: " + playerDTO.getExperienceLevel());
-				
-				playerCards.add(card);
-				playerListPanel.add(card);
-			}
-			
-	        scrollPanel = new JScrollPane(playerListPanel);
-	        scrollPanel.setBorder(BorderFactory.createEmptyBorder());
-	        scrollPanel.getVerticalScrollBar().setUnitIncrement(16);
-	        infoPanel.add(scrollPanel);
-		}
-		
-		repaintView();
-	}
+    /**
+     * Construye un nuevo TeamDetailPanel e inicializa sus componentes.
+     */
+    public TeamDetailPanel() {
+        setLayout(new BorderLayout());
+        setBackground(Color.decode(Colors.LIGHT_GRAY));
+        setBorder(new EmptyBorder(20, 20, 20, 20));
 
-	public void repaintView() {
-		revalidate();
-		repaint();  
-	}
-	
-	public JPanel getPlayerLabelPanel() {
-		return playerLabelPanel;
-	}
+        initializeComponents();
+    }
 
-	public void setPlayerLabelPanel(JPanel playerLabelPanel) {
-		this.playerLabelPanel = playerLabelPanel;
-	}
+    /**
+     * Inicializa los componentes del panel, incluyendo el logo, la información del equipo
+     * y la lista de jugadores.
+     */
+    private void initializeComponents() {
+        logoPanel = new JPanel();
+        logoPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-	public JPanel getLogoPanel() {
-		return logoPanel;
-	}
+        ImageIcon teamIcon = loadIcon(AssetPaths.TEAM_ICON, 90, 90);
+        logoLabel = new JLabel(teamIcon);
+        logoPanel.add(logoLabel);
 
-	public void setLogoPanel(JPanel logoPanel) {
-		this.logoPanel = logoPanel;
-	}
+        infoPanel = new JPanel();
+        infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
 
-	public JPanel getInfoPanel() {
-		return infoPanel;
-	}
+        nameLabel = new JLabel("Nombre del Equipo");
+        nameLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nameLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+        infoPanel.add(nameLabel);
 
-	public void setInfoPanel(JPanel infoPanel) {
-		this.infoPanel = infoPanel;
-	}
+        coachLabel = new JLabel("Entrenador: ");
+        coachLabel.setFont(new Font("Arial", Font.ITALIC, 16));
+        coachLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        coachLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
+        infoPanel.add(coachLabel);
 
-	public JPanel getPlayerListPanel() {
-		return playerListPanel;
-	}
+        membersLabel = new JLabel("Miembros: 5");
+        membersLabel.setFont(new Font("Arial", Font.ITALIC, 16));
+        membersLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        membersLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
+        infoPanel.add(membersLabel);
 
-	public void setPlayerListPanel(JPanel playerListPanel) {
-		this.playerListPanel = playerListPanel;
-	}
+        scoreLabel = new JLabel("Puntuación: ");
+        scoreLabel.setFont(new Font("Arial", Font.ITALIC, 16));
+        scoreLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        scoreLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
+        infoPanel.add(scoreLabel);
 
-	public JScrollPane getScrollPanel() {
-		return scrollPanel;
-	}
+        rankingLabel = new JLabel("Ranking: ");
+        rankingLabel.setFont(new Font("Arial", Font.ITALIC, 16));
+        rankingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        rankingLabel.setBorder(new EmptyBorder(2, 2, 20, 2));
+        infoPanel.add(rankingLabel);
 
-	public void setScrollPanel(JScrollPane scrollPanel) {
-		this.scrollPanel = scrollPanel;
-	}
+        descriptionTextArea = new JTextArea();
+        descriptionTextArea.setText("");
+        descriptionTextArea.setFont(new Font("Arial", Font.PLAIN, 16));
+        descriptionTextArea.setWrapStyleWord(true);
+        descriptionTextArea.setLineWrap(true);
+        descriptionTextArea.setOpaque(false);
+        descriptionTextArea.setEditable(false);
 
-	public List<PlayerCardPanel> getPlayerCards() {
-		return playerCards;
-	}
+        playerCards = new ArrayList<>();
 
-	public void setPlayerCards(List<PlayerCardPanel> playerCards) {
-		this.playerCards = playerCards;
-	}
+        playersLabel = new JLabel("Jugadores: ");
+        playersLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        playersLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        playersLabel.setBorder(new EmptyBorder(20, 0, 20, 0));
+        infoPanel.add(playersLabel);
 
-	public JLabel getLogoLabel() {
-		return logoLabel;
-	}
+        add(logoPanel, BorderLayout.NORTH);
+        add(infoPanel, BorderLayout.CENTER);
+    }
 
-	public void setLogoLabel(JLabel logoLabel) {
-		this.logoLabel = logoLabel;
-	}
+    /**
+     * Carga un icono desde una ruta de imagen y lo escala a un tamaño específico.
+     *
+     * @param imagePath la ruta de la imagen
+     * @param width el ancho deseado del icono
+     * @param height el alto deseado del icono
+     * @return el icono escalado
+     */
+    public ImageIcon loadIcon(String imagePath, int width, int height) {
+        ImageIcon icon = new ImageIcon(imagePath);
+        Image scaledImage = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImage);
+    }
 
-	public JLabel getNameLabel() {
-		return nameLabel;
-	}
+    /**
+     * Renderiza los detalles del equipo a partir de un DTO de equipo.
+     *
+     * @param teamDTO el DTO del equipo
+     */
+    public void renderTeamDetail(TeamDTO teamDTO) {
+        int totalPlayers = teamDTO.getPlayerIds() != null ? teamDTO.getPlayerIds().size() : 0;
 
-	public void setNameLabel(JLabel nameLabel) {
-		this.nameLabel = nameLabel;
-	}
+        nameLabel.setText(teamDTO.getName());
+        coachLabel.setText("Entrenador: " + teamDTO.getCoachName());
+        descriptionTextArea.setText(teamDTO.getDescription());
+        scoreLabel.setText("Puntuación: " + teamDTO.getScore());
+        rankingLabel.setText("Ranking: " + teamDTO.getRanking());
+        membersLabel.setText("Miembros: " + totalPlayers);
 
-	public JLabel getCoachLabel() {
-		return coachLabel;
-	}
+        playerCards.clear();
+        playerListPanel = new JPanel();
+        playerListPanel.setLayout(new GridLayout(0, 2, 10, 10));
 
-	public void setCoachLabel(JLabel coachLabel) {
-		this.coachLabel = coachLabel;
-	}
+        if (teamDTO.getPlayerIds() != null && !teamDTO.getPlayerIds().isEmpty()) {
+            for (PlayerDTO playerDTO : teamDTO.getPlayers()) {
+                PlayerCardPanel card = new PlayerCardPanel();
+                card.getNameLabel().setText(playerDTO.getFirstName() + playerDTO.getLastName());
+                card.getTeamLabel().setText("Equipo: " + teamDTO.getName());
+                card.getCountryLabel().setText("País: " + playerDTO.getCountry());
+                card.getCityLabel().setText("Ciudad: " + playerDTO.getCity());
+                card.getAgeLabel().setText("Edad: " + playerDTO.getAge());
+                card.getExperienceLevelLabel().setText("Nivel de experiencia: " + playerDTO.getExperienceLevel());
 
-	public JLabel getMembersLabel() {
-		return membersLabel;
-	}
+                playerCards.add(card);
+                playerListPanel.add(card);
+            }
 
-	public void setMembersLabel(JLabel membersLabel) {
-		this.membersLabel = membersLabel;
-	}
+            scrollPanel = new JScrollPane(playerListPanel);
+            scrollPanel.setBorder(BorderFactory.createEmptyBorder());
+            scrollPanel.getVerticalScrollBar().setUnitIncrement(16);
+            infoPanel.add(scrollPanel);
+        }
 
-	public JLabel getPlayersLabel() {
-		return playersLabel;
-	}
+        repaintView();
+    }
 
-	public void setPlayersLabel(JLabel playersLabel) {
-		this.playersLabel = playersLabel;
-	}
+    /**
+     * Vuelve a pintar la vista para reflejar los cambios realizados.
+     */
+    public void repaintView() {
+        revalidate();
+        repaint();
+    }
 
-	public JLabel getScoreLabel() {
-		return scoreLabel;
-	}
+    /**
+     * Obtiene el panel para la etiqueta de jugadores.
+     *
+     * @return el panel para la etiqueta de jugadores
+     */
+    public JPanel getPlayerLabelPanel() {
+        return playerLabelPanel;
+    }
 
-	public void setScoreLabel(JLabel scoreLabel) {
-		this.scoreLabel = scoreLabel;
-	}
+    /**
+     * Establece el panel para la etiqueta de jugadores.
+     *
+     * @param playerLabelPanel el panel para la etiqueta de jugadores a establecer
+     */
+    public void setPlayerLabelPanel(JPanel playerLabelPanel) {
+        this.playerLabelPanel = playerLabelPanel;
+    }
 
-	public JLabel getRankingLabel() {
-		return rankingLabel;
-	}
+    /**
+     * Obtiene el panel para el logo del equipo.
+     *
+     * @return el panel para el logo del equipo
+     */
+    public JPanel getLogoPanel() {
+        return logoPanel;
+    }
 
-	public void setRankingLabel(JLabel rankingLabel) {
-		this.rankingLabel = rankingLabel;
-	}
+    /**
+     * Establece el panel para el logo del equipo.
+     *
+     * @param logoPanel el panel para el logo del equipo a establecer
+     */
+    public void setLogoPanel(JPanel logoPanel) {
+        this.logoPanel = logoPanel;
+    }
 
-	public JTextArea getDescriptionTextArea() {
-		return descriptionTextArea;
-	}
+    /**
+     * Obtiene el panel para la información del equipo.
+     *
+     * @return el panel para la información del equipo
+     */
+    public JPanel getInfoPanel() {
+        return infoPanel;
+    }
 
-	public void setDescriptionTextArea(JTextArea descriptionTextArea) {
-		this.descriptionTextArea = descriptionTextArea;
-	}
+    /**
+     * Establece el panel para la información del equipo.
+     *
+     * @param infoPanel el panel para la información del equipo a establecer
+     */
+    public void setInfoPanel(JPanel infoPanel) {
+        this.infoPanel = infoPanel;
+    }
 
+    /**
+     * Obtiene el panel para la lista de jugadores.
+     *
+     * @return el panel para la lista de jugadores
+     */
+    public JPanel getPlayerListPanel() {
+        return playerListPanel;
+    }
 
+    /**
+     * Establece el panel para la lista de jugadores.
+     *
+     * @param playerListPanel el panel para la lista de jugadores a establecer
+     */
+    public void setPlayerListPanel(JPanel playerListPanel) {
+        this.playerListPanel = playerListPanel;
+    }
 
+    /**
+     * Obtiene el panel de desplazamiento para la lista de jugadores.
+     *
+     * @return el panel de desplazamiento para la lista de jugadores
+     */
+    public JScrollPane getScrollPanel() {
+        return scrollPanel;
+    }
+
+    /**
+     * Establece el panel de desplazamiento para la lista de jugadores.
+     *
+     * @param scrollPanel el panel de desplazamiento para la lista de jugadores a establecer
+     */
+    public void setScrollPanel(JScrollPane scrollPanel) {
+        this.scrollPanel = scrollPanel;
+    }
+
+    /**
+     * Obtiene la lista de tarjetas de jugadores.
+     *
+     * @return la lista de tarjetas de jugadores
+     */
+    public List<PlayerCardPanel> getPlayerCards() {
+        return playerCards;
+    }
+
+    /**
+     * Establece la lista de tarjetas de jugadores.
+     *
+     * @param playerCards la lista de tarjetas de jugadores a establecer
+     */
+    public void setPlayerCards(List<PlayerCardPanel> playerCards) {
+        this.playerCards = playerCards;
+    }
+
+    /**
+     * Obtiene la etiqueta del logo del equipo.
+     *
+     * @return la etiqueta del logo del equipo
+     */
+    public JLabel getLogoLabel() {
+        return logoLabel;
+    }
+
+    /**
+     * Establece la etiqueta del logo del equipo.
+     *
+     * @param logoLabel la etiqueta del logo del equipo a establecer
+     */
+    public void setLogoLabel(JLabel logoLabel) {
+        this.logoLabel = logoLabel;
+    }
+
+    /**
+     * Obtiene la etiqueta del nombre del equipo.
+     *
+     * @return la etiqueta del nombre del equipo
+     */
+    public JLabel getNameLabel() {
+        return nameLabel;
+    }
+
+    /**
+     * Establece la etiqueta del nombre del equipo.
+     *
+     * @param nameLabel la etiqueta del nombre del equipo a establecer
+     */
+    public void setNameLabel(JLabel nameLabel) {
+        this.nameLabel = nameLabel;
+    }
+
+    /**
+     * Obtiene la etiqueta del nombre del entrenador.
+     *
+     * @return la etiqueta del nombre del entrenador
+     */
+    public JLabel getCoachLabel() {
+        return coachLabel;
+    }
+
+    /**
+     * Establece la etiqueta del nombre del entrenador.
+     *
+     * @param coachLabel la etiqueta del nombre del entrenador a establecer
+     */
+    public void setCoachLabel(JLabel coachLabel) {
+        this.coachLabel = coachLabel;
+    }
+
+    /**
+     * Obtiene la etiqueta del número de miembros del equipo.
+     *
+     * @return la etiqueta del número de miembros del equipo
+     */
+    public JLabel getMembersLabel() {
+        return membersLabel;
+    }
+
+    /**
+     * Establece la etiqueta del número de miembros del equipo.
+     *
+     * @param membersLabel la etiqueta del número de miembros del equipo a establecer
+     */
+    public void setMembersLabel(JLabel membersLabel) {
+        this.membersLabel = membersLabel;
+    }
+
+    /**
+     * Obtiene la etiqueta para la lista de jugadores.
+     *
+     * @return la etiqueta para la lista de jugadores
+     */
+    public JLabel getPlayersLabel() {
+        return playersLabel;
+    }
+
+    /**
+     * Establece la etiqueta para la lista de jugadores.
+     *
+     * @param playersLabel la etiqueta para la lista de jugadores a establecer
+     */
+    public void setPlayersLabel(JLabel playersLabel) {
+        this.playersLabel = playersLabel;
+    }
+
+    /**
+     * Obtiene la etiqueta de la puntuación del equipo.
+     *
+     * @return la etiqueta de la puntuación del equipo
+     */
+    public JLabel getScoreLabel() {
+        return scoreLabel;
+    }
+
+    /**
+     * Establece la etiqueta de la puntuación del equipo.
+     *
+     * @param scoreLabel la etiqueta de la puntuación del equipo a establecer
+     */
+    public void setScoreLabel(JLabel scoreLabel) {
+        this.scoreLabel = scoreLabel;
+    }
+
+    /**
+     * Obtiene la etiqueta del ranking del equipo.
+     *
+     * @return la etiqueta del ranking del equipo
+     */
+    public JLabel getRankingLabel() {
+        return rankingLabel;
+    }
+
+    /**
+     * Establece la etiqueta del ranking del equipo.
+     *
+     * @param rankingLabel la etiqueta del ranking del equipo a establecer
+     */
+    public void setRankingLabel(JLabel rankingLabel) {
+        this.rankingLabel = rankingLabel;
+    }
+
+    /**
+     * Obtiene el área de texto para la descripción del equipo.
+     *
+     * @return el área de texto para la descripción del equipo
+     */
+    public JTextArea getDescriptionTextArea() {
+        return descriptionTextArea;
+    }
+
+    /**
+     * Establece el área de texto para la descripción del equipo.
+     *
+     * @param descriptionTextArea el área de texto para la descripción del equipo a establecer
+     */
+    public void setDescriptionTextArea(JTextArea descriptionTextArea) {
+        this.descriptionTextArea = descriptionTextArea;
+    }
 }
