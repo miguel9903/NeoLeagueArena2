@@ -11,6 +11,10 @@ import co.edu.unbosque.util.Colors;
 import view.module.team.TeamFormPanel;
 import view.module.team.TeamPlayerAssignmentPanel;
 
+/**
+ * Panel de gestión de torneos.
+ * Contiene pestañas para administrar torneos, asignar partidos y ver el listado de torneos.
+ */
 public class TournamentManagementPanel extends JPanel {
 
     private JTabbedPane tabs;
@@ -18,12 +22,19 @@ public class TournamentManagementPanel extends JPanel {
     private TournamentMatchAssignmentPanel tournamentMatchAssignmentPanel;
     private TournamentTablePanel tournamentTablePanel;
     
+    /**
+     * Constructor que configura el diseño del panel y su apariencia inicial.
+     */
     public TournamentManagementPanel() {
         setBorder(new EmptyBorder(10, 10, 10, 10));
         setBackground(Color.decode(Colors.LIGHT_GRAY));
         initializeComponents();
     }
 
+    /**
+     * Inicializa los componentes internos del panel.
+     * Crea las pestañas y les asigna los subpaneles correspondientes.
+     */
     private void initializeComponents() {
         tabs = new JTabbedPane();
 
@@ -42,36 +53,68 @@ public class TournamentManagementPanel extends JPanel {
         add(tabs);
     }
 
-	public JTabbedPane getTabs() {
-		return tabs;
-	}
+    /**
+     * Retorna el componente de pestañas.
+     * @return JTabbedPane con los paneles de gestión
+     */
+    public JTabbedPane getTabs() {
+        return tabs;
+    }
 
-	public void setTabs(JTabbedPane tabs) {
-		this.tabs = tabs;
-	}
+    /**
+     * Establece el componente de pestañas.
+     * @param tabs nuevo JTabbedPane
+     */
+    public void setTabs(JTabbedPane tabs) {
+        this.tabs = tabs;
+    }
 
-	public TournamentFormPanel getTournamentFormPanel() {
-		return tournamentFormPanel;
-	}
+    /**
+     * Retorna el panel de formulario de torneo.
+     * @return TournamentFormPanel
+     */
+    public TournamentFormPanel getTournamentFormPanel() {
+        return tournamentFormPanel;
+    }
 
-	public void setTournamentFormPanel(TournamentFormPanel tournamentFormPanel) {
-		this.tournamentFormPanel = tournamentFormPanel;
-	}
+    /**
+     * Establece el panel de formulario de torneo.
+     * @param tournamentFormPanel nuevo panel de formulario
+     */
+    public void setTournamentFormPanel(TournamentFormPanel tournamentFormPanel) {
+        this.tournamentFormPanel = tournamentFormPanel;
+    }
 
-	public TournamentMatchAssignmentPanel getTournamentMatchAssignmentPanel() {
-		return tournamentMatchAssignmentPanel;
-	}
+    /**
+     * Retorna el panel de asignación de partidos de torneo.
+     * @return TournamentMatchAssignmentPanel
+     */
+    public TournamentMatchAssignmentPanel getTournamentMatchAssignmentPanel() {
+        return tournamentMatchAssignmentPanel;
+    }
 
-	public void setTournamentMatchAssignmentPanel(TournamentMatchAssignmentPanel tournamentMatchAssignmentPanel) {
-		this.tournamentMatchAssignmentPanel = tournamentMatchAssignmentPanel;
-	}
+    /**
+     * Establece el panel de asignación de partidos de torneo.
+     * @param tournamentMatchAssignmentPanel nuevo panel de asignación
+     */
+    public void setTournamentMatchAssignmentPanel(TournamentMatchAssignmentPanel tournamentMatchAssignmentPanel) {
+        this.tournamentMatchAssignmentPanel = tournamentMatchAssignmentPanel;
+    }
 
-	public TournamentTablePanel getTournamentTablePanel() {
-		return tournamentTablePanel;
-	}
+    /**
+     * Retorna el panel con la tabla/listado de torneos.
+     * @return TournamentTablePanel
+     */
+    public TournamentTablePanel getTournamentTablePanel() {
+        return tournamentTablePanel;
+    }
 
-	public void setTournamentTablePanel(TournamentTablePanel tournamentTablePanel) {
-		this.tournamentTablePanel = tournamentTablePanel;
-	}
+    /**
+     * Establece el panel con la tabla/listado de torneos.
+     * @param tournamentTablePanel nuevo panel de tabla
+     */
+    public void setTournamentTablePanel(TournamentTablePanel tournamentTablePanel) {
+        this.tournamentTablePanel = tournamentTablePanel;
+    }
 
 }
