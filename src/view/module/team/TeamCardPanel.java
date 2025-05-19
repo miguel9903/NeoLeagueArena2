@@ -6,10 +6,12 @@
 package view.module.team;
 
 import javax.swing.*;
+
+import co.edu.unbosque.util.AssetPaths;
+import co.edu.unbosque.util.Colors;
+
 import java.awt.*;
 
-import utils.AssetPaths;
-import utils.Colors;
 import view.shared.BaseCardPanel;
 
 /**

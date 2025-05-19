@@ -18,9 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import utils.AssetPaths;
-import utils.ButtonActionCommands;
-import utils.Colors;
+import co.edu.unbosque.util.AssetPaths;
+import co.edu.unbosque.util.ButtonActionCommands;
+import co.edu.unbosque.util.Colors;
 
 public class RegisterWindow extends JFrame {
 

@@ -16,9 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import utils.AssetPaths;
-import utils.Colors;
-import utils.ViewNames;
+import co.edu.unbosque.util.AssetPaths;
+import co.edu.unbosque.util.Colors;
+import co.edu.unbosque.util.ViewNames;
 
 public class SideBarPanel extends JPanel {
 

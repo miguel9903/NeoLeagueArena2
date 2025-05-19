@@ -2,13 +2,14 @@ package view.modules.coach;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import co.edu.unbosque.model.CoachDTO;
+import co.edu.unbosque.util.ButtonActionCommands;
+import co.edu.unbosque.util.WordingMessages;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import model.persistence.dto.CoachDTO;
-import utils.ButtonActionCommands;
-import utils.WordingMessages;
 
 
 public class CoachPanel extends JPanel {

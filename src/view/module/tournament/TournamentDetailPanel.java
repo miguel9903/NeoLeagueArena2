@@ -3,11 +3,13 @@ package view.module.tournament;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import co.edu.unbosque.util.AssetPaths;
+import co.edu.unbosque.util.Colors;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import utils.AssetPaths;
-import utils.Colors;
+
 import view.modules.player.PlayerCardPanel;
 import view.shared.CardListPanel;
  

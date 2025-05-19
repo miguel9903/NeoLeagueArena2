@@ -1,8 +1,11 @@
 package view.modules.game;
 
 import javax.swing.*;
+
+import co.edu.unbosque.util.Colors;
+
 import java.awt.*;
-import utils.Colors;
+
 import view.shared.CardListPanel;
 
 public class GamePanel extends JPanel {

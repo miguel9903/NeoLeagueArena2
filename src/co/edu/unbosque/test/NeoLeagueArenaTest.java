@@ -5,14 +5,14 @@ import static org.junit.Assert.*;
 import java.time.LocalDate;
 import java.util.List;
 
-import model.NeoLeagueArena;
-import model.enums.UserRole;
-import model.persistence.dto.PlayerDTO;
-import model.persistence.dto.TeamDTO;
-import model.persistence.dto.UserDTO;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import co.edu.unbosque.model.NeoLeagueArena;
+import co.edu.unbosque.model.PlayerDTO;
+import co.edu.unbosque.model.TeamDTO;
+import co.edu.unbosque.model.UserDTO;
+import co.edu.unbosque.model.UserRole;
 
 /**
  * Pruebas unitarias para la clase NeoLeagueArena.

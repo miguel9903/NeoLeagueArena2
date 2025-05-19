@@ -10,7 +10,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import model.persistence.dto.CoachDTO;
+import co.edu.unbosque.model.CoachDTO;
 import view.shared.FormHeaderPanel;
 
 public class CoachTablePanel extends JPanel {

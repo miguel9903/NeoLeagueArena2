@@ -17,10 +17,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.persistence.dto.CoachDTO;
-import model.persistence.dto.PlayerDTO;
-import model.persistence.dto.TeamDTO;
-import utils.Colors;
+import co.edu.unbosque.model.CoachDTO;
+import co.edu.unbosque.model.PlayerDTO;
+import co.edu.unbosque.model.TeamDTO;
+import co.edu.unbosque.util.Colors;
 import view.shared.FormFooterPanel;
 import view.shared.FormHeaderPanel;
 

@@ -15,9 +15,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 
-import model.enums.GameGenre;
-import model.enums.GameMode;
-import model.enums.GamePlatform;
+import co.edu.unbosque.model.GameGenre;
+import co.edu.unbosque.model.GameMode;
+import co.edu.unbosque.model.GamePlatform;
 
 public class GameFormFieldsPanel extends JPanel {
 

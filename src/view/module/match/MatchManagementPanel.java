@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
-import utils.Colors;
+import co.edu.unbosque.util.Colors;
 
 /**
  * La clase MatchManagementPanel representa un panel que gestiona la visualización y manipulación

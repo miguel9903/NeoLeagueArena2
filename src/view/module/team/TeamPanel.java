@@ -3,15 +3,16 @@ package view.module.team;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import co.edu.unbosque.model.TeamDTO;
+import co.edu.unbosque.util.ButtonActionCommands;
+import co.edu.unbosque.util.Colors;
+import co.edu.unbosque.util.WordingMessages;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.ButtonActionCommands;
-import utils.Colors;
-import utils.WordingMessages;
 import view.shared.CardListPanel;
-import model.persistence.dto.TeamDTO; // Asegúrate de importar el DTO correctamente
 
 public class TeamPanel extends JPanel {
 

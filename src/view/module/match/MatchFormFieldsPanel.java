@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import model.persistence.dto.CoachDTO;
+import co.edu.unbosque.model.CoachDTO;
 
 import javax.swing.JScrollPane;
 

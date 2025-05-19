@@ -5,7 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
-import utils.ViewNames;
+import co.edu.unbosque.util.ViewNames;
 import view.module.home.HomePanel;
 import view.module.match.MatchPanel;
 import view.module.report.ReportPanel;

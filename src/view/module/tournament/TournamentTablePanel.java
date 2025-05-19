@@ -10,7 +10,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import model.persistence.dto.TournamentDTO;
+import co.edu.unbosque.model.TournamentDTO;
 import view.shared.FormHeaderPanel;
 
 public class TournamentTablePanel extends JPanel {

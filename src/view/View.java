@@ -1,7 +1,8 @@
 package view;
 
 import java.awt.Component;
-import utils.MessageDisplayer;
+
+import co.edu.unbosque.util.MessageDisplayer;
 import view.modules.login.LoginWindow;
 import view.modules.signup.RegisterWindow;
 import view.windows.MainWindow;

@@ -5,11 +5,12 @@ import static org.junit.Assert.*;
 import java.time.LocalDate;
 import java.util.List;
 
-import model.Player;
-import model.enums.UserRole;
-import model.persistence.dao.PlayerDAO;
 import org.junit.Before;
 import org.junit.Test;
+
+import co.edu.unbosque.model.Player;
+import co.edu.unbosque.model.UserRole;
+import co.edu.unbosque.persistence.PlayerDAO;
 
 /**
  * Pruebas unitarias para verificar el funcionamiento del DAO de jugadores (PlayerDAO).

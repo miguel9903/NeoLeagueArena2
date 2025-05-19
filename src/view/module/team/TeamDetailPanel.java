@@ -8,15 +8,16 @@ package view.module.team;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import model.persistence.dto.PlayerDTO;
-import model.persistence.dto.TeamDTO;
+import co.edu.unbosque.model.PlayerDTO;
+import co.edu.unbosque.model.TeamDTO;
+import co.edu.unbosque.util.AssetPaths;
+import co.edu.unbosque.util.Colors;
+import co.edu.unbosque.util.WordingMessages;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import utils.AssetPaths;
-import utils.Colors;
-import utils.WordingMessages;
+
 import view.modules.player.PlayerCardPanel;
 import view.shared.CardListPanel;
 

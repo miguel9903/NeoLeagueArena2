@@ -3,7 +3,7 @@ package view.windows;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
-import utils.MessageDisplayer;
+import co.edu.unbosque.util.MessageDisplayer;
 import view.modules.layout.MainContentPanel;
 import view.modules.navigation.SideBarPanel;
 

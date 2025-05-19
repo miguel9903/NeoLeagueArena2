@@ -7,10 +7,15 @@ package view.module.match;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import co.edu.unbosque.model.MatchDTO;
+import co.edu.unbosque.util.WordingMessages;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import model.persistence.dto.MatchDTO;
 import utils.WordingMessages;
 
@@ -19,6 +24,8 @@ import utils.WordingMessages;
  * Permite renderizar tarjetas de partidos a partir de una lista de DTOs de partidos y gestionar
  * la visualización de mensajes cuando no hay partidos disponibles.
  */
+=======
+>>>>>>> 2e47c61b274ace2cb6e941ddcd4d2c73bcd94a59
 public class MatchPanel extends JPanel {
 
     /** Panel que contiene la lista de tarjetas de partidos. */

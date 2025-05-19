@@ -11,8 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import model.enums.GamePlatform;
-import model.enums.TournamentPhase;
+import co.edu.unbosque.model.GamePlatform;
+import co.edu.unbosque.model.TournamentPhase;
 
 public class TournamentFormFieldsPanel extends JPanel {
 
